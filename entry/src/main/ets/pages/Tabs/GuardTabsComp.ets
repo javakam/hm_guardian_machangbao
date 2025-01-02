@@ -1,7 +1,7 @@
 
 @Component
 export struct GuardTabsComp {
-  @State message: string = '中心';
+  @State message: string = '守护中心';
   build() {
     RelativeContainer() {
       Text(this.message)
