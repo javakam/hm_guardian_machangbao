@@ -1,9 +1,11 @@
 # 纯血 HarmonyOS Next 项目《守护助手APP》学习
 
-```
-2024年12月31日16:55:53 搭了个壳子
+### 重点内容
+- Gitee官方项目：https://gitee.com/harmonyos_samples
+- 文字特效合集：https://gitee.com/harmonyos_samples/text-effects
+- HarmonyOS图标库 https://developer.huawei.com/consumer/cn/design/harmonyos-icon/
+- 阿里巴巴矢量图标库 https://www.iconfont.cn/
 
-```
 
 ### 课程资料
 - 视频》课程地址： `https://www.bilibili.com/video/BV1EJpLeRE3L/`
