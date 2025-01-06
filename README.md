@@ -3,6 +3,9 @@
 ### 重点内容
 - Gitee官方项目：https://gitee.com/harmonyos_samples
 - 文字特效合集：https://gitee.com/harmonyos_samples/text-effects
+- ImageKnife（专门为OpenHarmony打造的一款图像加载缓存库，致力于更高效、更轻便、更简单。）
+  https://gitee.com/openharmony-tpc/ImageKnife
+  
 - HarmonyOS图标库 https://developer.huawei.com/consumer/cn/design/harmonyos-icon/
 - 阿里巴巴矢量图标库 https://www.iconfont.cn/
 

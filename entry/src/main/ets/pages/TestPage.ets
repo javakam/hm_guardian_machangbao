@@ -493,9 +493,20 @@ struct TestPage {
           .width(100)
 
         // 网络图片
-        Image('http://www.zqrb.cn/zqrb_index/images/logoyeshou.jpg')
+        Image('https://www.baidu.com/img/flexible/logo/pc/result.png')
           .width(100)
-        //.alt($r('app.media.startIcon')) // 加载时显示的占位图
+        // 加载时显示的占位图
+        .alt($r('app.media.startIcon'))
+        //module.json5 加入网络权限
+        //"requestPermissions": [{ "name": "ohos.permission.INTERNET"}]
+
+        /*
+        声明权限
+        https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/security/AccessToken/declare-permissions.md
+        说明： 已在子模块中申请的权限，无需在主项目重复添加，权限将在整个应用生效。
+        *
+
+         */
 
         this.spaceLine();
 
@@ -518,6 +529,7 @@ struct TestPage {
          */
         this.spaceLine();
 
+        //objectFit
         // 图片宽或高缩放到与组件尺寸相同则停止缩放，可能导致组件有空白（等比缩放）
         Image($r('app.media.ic_my_avatar'))
           .width(150)
@@ -529,13 +541,15 @@ struct TestPage {
         Image($r('app.media.ic_my_avatar'))
           .width(150)
           .height(100)
-          .backgroundColor(Color.Pink).objectFit(ImageFit.Cover)
+          .backgroundColor(Color.Pink)
+          .objectFit(ImageFit.Cover)
 
         // 图片缩放至充满组件（不等比缩放）
         Image($r('app.media.ic_my_avatar'))
           .width(150)
           .height(100)
-          .backgroundColor(Color.Pink).objectFit(ImageFit.Fill)
+          .backgroundColor(Color.Pink)
+          .objectFit(ImageFit.Fill)
 
         this.dividerLine();
 
@@ -660,23 +674,23 @@ struct TestPage {
           Image($r('app.media.ic_test_dishi'))
             .width('100%')
             .height(150)
-            .borderRadius({topLeft: 8, topRight: 8})
+            .borderRadius({ topLeft: 8, topRight: 8 })
           Text('磁力片。工厂直发磁力王。100片，尺寸7.5cm 可兼容其他品牌')
             .width('100%')
-            .padding({left: 5, right: 5})
+            .padding({ left: 5, right: 5 })
             .fontSize(12)
             .lineHeight(18)
             .maxLines(2)
-            .textOverflow({overflow: TextOverflow.Ellipsis})
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
           Text('￥ 87')
             .width('100%')
-            .padding({left: 5, right: 5})
+            .padding({ left: 5, right: 5 })
             .fontSize(13)
             .fontColor('#f00')
-            .margin({top: 5})
+            .margin({ top: 5 })
         }
         .width('50%')
-        .padding({bottom:10})
+        .padding({ bottom: 10 })
         .backgroundColor('#fff')
         .borderRadius(8)
 
@@ -698,16 +712,21 @@ struct TestPage {
           Text('华为PSIRT按照漏洞处理流程对上报的潜在漏洞进行处理')
             .fontSize(10)
             .fontColor('#fff')
-            .margin({top: 10, bottom: 10})
+            .margin({ top: 10, bottom: 10 })
           Text('了解更多')
             .fontColor('#fff')
             .fontSize(8)
-            .border({width: 1, color: '#fff'})
-            .padding({left: 20, right: 20, top:5, bottom: 5})
+            .border({ width: 1, color: '#fff' })
+            .padding({
+              left: 20,
+              right: 20,
+              top: 5,
+              bottom: 5
+            })
         }
-        .width('90%')
-        .height(160)
-        .padding({left: 10, right: 10, top: 20})
+        .width('100%')
+        .height(170)
+        .padding({ left: 10, right: 10, top: 20 })
         .backgroundImage($r('app.media.ic_test_huawei'))
         .backgroundColor(Color.Pink)
         //.backgroundImagePosition({x: 100, y: 50})
@@ -715,13 +734,140 @@ struct TestPage {
         // .backgroundImageSize(ImageSize.Cover)
 
         //总结：先用 Contain 调到大致效果，最后改用 ImageSize.Cover 补充一些缝隙留白。
-        .backgroundImagePosition(Alignment.TopStart)
-        .backgroundImageSize(ImageSize.Contain)
-
-
-        //todo 2025年1月3日17:07:03
+        // .backgroundImagePosition(Alignment.Top)
+        // .backgroundImageSize(ImageSize.Contain)
+        //最后
+        .backgroundImagePosition(Alignment.Top)
+        .backgroundImageSize(ImageSize.Cover)
 
         this.dividerLine();
+
+        //线性渐变 linearGradient
+        /*
+        {
+          angle?:  线性渐变的起始角度,
+          direction?: 线性渐变的方向,
+          colors: [[颜色1, 颜色1所处位置], [颜色2, 颜色2所处位置], ......],
+          repeating?: 是否重复着色
+        }
+        angle：线性渐变的起始角度。0点方向顺时针旋转为正向角度，默认值：180
+        direction: 线性渐变的方向，设置 angle 后不生效，值为 枚举类型 GradientDirection
+        Left：(从右向) 左 ; Top：(从下向) 上 ; RightBottom：(从左上 到) 右下 ...
+
+        径向渐变 radialGradient
+
+         */
+        Text('线性')
+          .width(100)
+          .height(50)
+          .backgroundColor(Color.Pink)
+          .linearGradient({
+            direction: GradientDirection.Right,
+            colors: [['#0ff', 0.1], ['#fc0', 0.8]]
+          })
+
+        this.spaceLine()
+
+        //angle：线性渐变的起始角度。0点方向顺时针旋转为正向角度，默认值：180
+        Text('线性（angle）')
+          .width(100)
+          .height(50)
+          .backgroundColor(Color.Pink)
+          .linearGradient({
+            angle: 180,
+            colors: [['#0ff', 0.1], ['#fc0', 0.8]]
+          })
+
+        this.spaceLine()
+
+        Text('径向')
+          .width(100).height(50).backgroundColor(Color.Pink)
+          .radialGradient({
+            center: [40, 0],
+            radius: 40,
+            // colors: [['red', 0.1], ['#fc0', '0.8']],
+            colors: [
+              ['rgba(255, 255, 255, 0.6)', 0],
+              ['rgba(255, 255, 255, 0)', 1]
+            ]
+            // repeating:true
+          })
+
+        this.dividerLine();
+
+        //阴影(shadow)
+        /*
+        {
+          radius: 模糊半径,
+          type?: 阴影类型,
+          color?: 阴影颜色,
+          offsetX?: X轴偏移,
+          offsetY?: Y轴偏移,
+          fill?: 是否内部填充
+        }
+         */
+        Row() {
+        }
+        .width('90%').height(160).backgroundColor('#ff0')
+        .shadow({
+          // 模糊半径
+          radius: 20,
+          // 阴影类型
+          type: ShadowType.COLOR,
+          // 阴影颜色 - 测试红色
+          color: 'rgba(0,0,0,0.5)',
+          // X 轴偏移
+          offsetX: 0,
+          // Y 轴偏移
+          offsetY: 0,
+          // 是否内部填充，值为布尔型，默认为 false
+          fill: false
+        })
+
+        this.dividerLine()
+
+        //案例-华为商品卡片
+        Column() {
+          Image($r('app.media.all_x5')).width(150).margin({ bottom: 20 })
+          Text('HUAWEI Mate X5')
+            .width('100%')
+            .fontSize(14)
+            .fontWeight(700)
+            .margin({ bottom: 30 })
+          Text('￥12999 起').width('100%').fontSize(10).margin({ bottom: 15 })
+          Row() {
+            Row() {
+              Text('了解更多').fontSize(10)
+              Image($r('app.media.ic_public_arrow_right')).width(12)
+            }
+            .margin({ right: 10 })
+
+            Row() {
+              Text('购买').fontSize(10)
+              Image($r('app.media.ic_public_arrow_right')).width(12)
+            }
+          }
+          .width('100%')
+        }
+        .width(200)
+        .backgroundColor('#fff')
+        .padding(15)
+        .margin(20)
+        .shadow({
+          radius: 20,
+          color: '#1a000000'
+        })
+        .borderRadius(8)
+
+        this.dividerLine()
+
+        //显示图片（Image）
+        //https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/ui/arkts-graphics-display.md
+
+
+
+
+
 
       }
     }
