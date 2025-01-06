@@ -10,10 +10,12 @@
 - 阿里巴巴矢量图标库 https://www.iconfont.cn/
 
 > 博客园（Megasu）https://www.cnblogs.com/Megasu/p/17945667
-> 
+> 问题："ohpm : 无法将“ohpm”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。"
 > 
 > PowerShell 安全策略。能在 cmd 终端中使用 ohpm，但不能在 PowerShell 中使用，需解决安全策略问题。 https://www.cnblogs.com/Megasu/p/17945667
-
+> IDE路径："C:\fastwork\Huawei\DevEco Studio\bin"，
+> ohpm路径："C:\fastwork\Huawei\DevEco Studio\tools\ohpm\bin"。
+>
 
 ### 课程资料
 - 视频》课程地址： `https://www.bilibili.com/video/BV1EJpLeRE3L/`

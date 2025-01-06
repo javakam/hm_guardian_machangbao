@@ -239,6 +239,20 @@ struct TestPage {
           person.dance()
         }).margin({ top: 20 })
 
+        /*
+        HarmonyOS Next 知识地图
+        https://developer.huawei.com/consumer/cn/app/knowledge-map/
+        ① 了解HarmonyOS     ->   鸿蒙开发快速入门
+        ② 一次开发，多端部署  ->  "一多垂域案例"
+        ③ 业务场景与解决方案  -> 新闻阅读类 , 项目代码 FluentNewsHomepage :
+           https://gitee.com/harmonyos_samples/fluent-news-homepage
+           最后过一遍该项目
+
+        HarmonyOS Next 应用开发导读 -> HarmonyOS | 5.0.0(13)
+        https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/application-dev-guide-V5
+        https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/application-dev-guide-V13?catalogVersion=V13
+         */
+
         //基础组件
         //https://www.yuque.com/megasu/hm_base_v1.1/bqx56scr5fx9lkm1
 
@@ -494,18 +508,29 @@ struct TestPage {
 
         // 网络图片
         Image('https://www.baidu.com/img/flexible/logo/pc/result.png')
-          .width(100)
-        // 加载时显示的占位图
-        .alt($r('app.media.startIcon'))
-        //module.json5 加入网络权限
-        //"requestPermissions": [{ "name": "ohos.permission.INTERNET"}]
-
+          .width(100)// 加载时显示的占位图
+          .alt($r('app.media.startIcon'))
         /*
-        声明权限
-        https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/security/AccessToken/declare-permissions.md
-        说明： 已在子模块中申请的权限，无需在主项目重复添加，权限将在整个应用生效。
-        *
+       声明权限
+       https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/security/AccessToken/declare-permissions.md
+       说明： 已在子模块中申请的权限，无需在主项目重复添加，权限将在整个应用生效。
 
+       module.json5 加入网络权限  >>>  "requestPermissions": [{ "name": "ohos.permission.INTERNET"}]
+        */
+
+        //
+        //ImageKnife https://gitee.com/openharmony-tpc/ImageKnife
+        //ohpm 安装
+        /*
+        OpenHarmony 和 HarmonyOS Next的区别
+
+        OpenHarmony 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目，它是一个面向全场景的分布式操作系统。
+           OpenHarmony 的目标是为不同类型的智能设备提供一个统一的操作系统平台，支持多种硬件架构，并通过分布式技术实现设备间的无缝协同工作。
+           作为一个开源项目，OpenHarmony 吸引了来自全球开发者社区的广泛参与和支持，共同推进其发展。
+
+        HarmonyOS Next 是基于 OpenHarmony 开源项目的一个版本分支，由华为公司主导开发。
+           HarmonyOS Next 也有包含了华为针对自身产品和服务优化的独特功能和技术改进。
+           这些改进可能包括但不限于增强的安全机制、优化的性能表现以及与华为云服务和其他专有服务的深度集成。
          */
 
         this.spaceLine();
@@ -861,11 +886,27 @@ struct TestPage {
 
         this.dividerLine()
 
-        //显示图片（Image）
+        //OpenHarmony -> 显示图片（Image）
         //https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/ui/arkts-graphics-display.md
 
+        this.dividerLine()
 
-
+        //todo 2025年1月6日17:08:44
+        //布局等间距
+        Row({ space: 20 }) {
+          Text('子元素1')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Orange)
+          Text('子元素3')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
 
 
 
