@@ -9,6 +9,11 @@
 - HarmonyOS图标库 https://developer.huawei.com/consumer/cn/design/harmonyos-icon/
 - 阿里巴巴矢量图标库 https://www.iconfont.cn/
 
+> 博客园（Megasu）https://www.cnblogs.com/Megasu/p/17945667
+> 
+> 
+> PowerShell 安全策略。能在 cmd 终端中使用 ohpm，但不能在 PowerShell 中使用，需解决安全策略问题。 https://www.cnblogs.com/Megasu/p/17945667
+
 
 ### 课程资料
 - 视频》课程地址： `https://www.bilibili.com/video/BV1EJpLeRE3L/`
