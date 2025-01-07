@@ -884,16 +884,33 @@ struct TestPage {
         })
         .borderRadius(8)
 
-        this.dividerLine()
-
         //OpenHarmony -> 显示图片（Image）
         //https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/ui/arkts-graphics-display.md
 
         this.dividerLine()
 
-        //todo 2025年1月6日17:08:44
-        //布局等间距
+        //布局 - 横向等间距
         Row({ space: 20 }) {
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+          Text('子元素3')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .backgroundColor(Color.Blue)
+        .padding(1)
+
+        this.dividerLine()
+
+        //布局 - 竖向等间距
+        Column({ space: 20 }) {
           Text('子元素1')
             .width(100)
             .height(40)
@@ -907,8 +924,292 @@ struct TestPage {
             .height(40)
             .backgroundColor(Color.Brown)
         }
+        .backgroundColor(Color.Blue)
+        .padding(1)
+
+        this.dividerLine()
+        /*
+        布局主方向对齐方式  justifyContent(枚举 FlexAlign)
+          Start 首端对齐 ; Center 居中对齐 ; End 尾部对齐
+          SpaceBetween 两端对齐。子元素之间间距相等
+          SpaceAround  子元素两侧间距相等。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半
+          SpaceEvenly  相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样
+          https://www.yuque.com/megasu/hm_base_v1.1/uvyg8ko64lrdrzt0
+          *
+          *
+          概念：
+          1 布局主方向在线性布局中叫做布局主轴
+          2 另外一条坐标轴叫做交叉轴
+         */
+
+        // 主布局方向的对齐方式 justifyContent SpaceBetween
+        Row() {
+          Text('justifyContent.SpaceBetween')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+            .fontSize(12)
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(100)
+        .backgroundColor('#ccc')
+        // 主布局方向的对齐方式
+        //.justifyContent(FlexAlign.Center)
+        // 两端对齐
+        .justifyContent(FlexAlign.SpaceBetween)
+
+        this.spaceLine()
+
+        // 主布局方向的对齐方式 justifyContent SpaceAround
+        Row() {
+          Text('justifyContent.SpaceAround')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+            .fontSize(12)
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(100)
+        .backgroundColor('#ccc')
+        // 主布局方向的对齐方式
+        .justifyContent(FlexAlign.SpaceAround)
+
+        this.spaceLine()
+
+        // 主布局方向的对齐方式 justifyContent SpaceEvenly
+        Row() {
+          Text('justifyContent.SpaceEvenly')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+            .fontSize(12)
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(100)
+        .backgroundColor('#ccc')
+        .justifyContent(FlexAlign.SpaceEvenly)
+
+        this.dividerLine()
+
+        //交叉轴对齐方式 alignItems(枚举 VerticalAlign) - 以 Row 为例，主轴在水平方向，交叉轴在垂直方向
+        Row() {
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+          Text('子元素3')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor('#ccc')
+        // 顶部对齐
+        //.alignItems(VerticalAlign.Top)
+        .alignItems(VerticalAlign.Bottom)
+
+        this.dividerLine()
+
+        Column() {
+          Text('子元素1')
+            .width(80)
+            .height(30)
+            .backgroundColor(Color.Pink)
+          Text('子元素2')
+            .width(80)
+            .height(30)
+            .backgroundColor(Color.Orange)
+          Text('子元素3')
+            .width(80)
+            .height(30)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor('#ccc')
+        //报错： Argument of type 'VerticalAlign' is not assignable to parameter of type 'HorizontalAlign'. <ArkTSCheck>
+        //报错： “VerticalAlign”类型的参数不能分配给“HorizontalAlign”类型的参数。<ArkTSCheck>
+
+        // 顶部对齐
+        //.alignItems(HorizontalAlign.Start)
+        // 底部对齐
+        .alignItems(HorizontalAlign.End)
+
+        this.dividerLine()
+
+        //总结：
+        //1 交叉轴的具体方向，永远是从左往右，或是从上往下。
+        //2 justifyContent 默认是靠左 ; alignItems 默认是居中。
+        //验证
+        Row() {
+          Text('子元素')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor("#d3f2e3")
+
+        this.spaceLine()
+
+        Column() {
+          Text('子元素')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor(Color.Blue)
+
+        this.dividerLine()
+
+        //单个子元素交叉轴对齐方式 alignSelf()
+        //枚举ItemAlign(Stretch拉伸，交叉轴拉伸效果)
+        Row() {
+          Text('子元素1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('alignSelf(ItemAlign.Stretch)')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)// 交叉轴方向尺寸拉伸
+            .fontSize(14)
+            .alignSelf(ItemAlign.Stretch)
+          Text('子元素3')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor('#ccc')
+
+        this.dividerLine()
+
+        //同时设置 alignSelf 和 alignItems，alignSelf 生效，alignItems失效。
+        Column() {
+          Text('1')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('2')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Orange)// 单个元素-交叉轴对齐方式
+            .alignSelf(ItemAlign.End)
+          Text('3')
+            .width(100)
+            .height(40)
+            .backgroundColor(Color.Pink)
+        }
+        .width('100%')
+        .height(300)
+        .backgroundColor('#ccc')
+        // 主轴对齐方式 -- 与Row写法一致
+        .justifyContent(FlexAlign.SpaceBetween)
+        // 交叉轴对齐方式（水平方向），默认居中
+        .alignItems(HorizontalAlign.Start)
+
+        //总结：实际效果中，alignSelf(ItemAlign.End) 会覆盖掉 alignItems(HorizontalAlign.Start) 的效果。
+        this.dividerLine()
+
+        //layoutWeight 原理与 Android 布局比重一致。
+        //父容器尺寸确定时，设置了 layoutWeight 属性的子元素与兄弟元素占主轴尺寸按照权重进行分配。
+        Column() {
+          // 主轴方向：水平方向
+          Row() {
+            Text('左侧')
+              .width(60)
+              .height(30)
+              .backgroundColor('#ccc')
+            Text('中间')
+              .height(30)
+              .backgroundColor(Color.Pink)
+              .layoutWeight(0.5)
+            Text('右侧 layoutWeight')
+              .height(30)
+              .backgroundColor('#fc0')
+              .layoutWeight(1)
+          }
+        }
+
+        this.dividerLine()
+
+        //案例-头条新闻
+        //非常好的案例，融合了 justifyContent，alignItems，layoutWeight 的使用。
+        Row({ space: 10 }) {
+          // 左侧
+          Column() {
+            Text('第五个国际数学日，全世界和数据一起玩儿')
+              .fontSize(14)
+              .fontColor('#444')
+            Row() {
+              Text('中国青年网 昨天')
+                .fontSize(12)
+                .fontColor('#999')
+                .layoutWeight(1)
+              Image($r('app.media.ic_close'))
+                .width(14)
+                .fillColor('#999')
+            }
+            // .width('100%')
+            // .justifyContent(FlexAlign.SpaceBetween)
+          }
+          .layoutWeight(1)
+          .height('100%')
+          // 水平左对齐 -- 交叉轴
+          .alignItems(HorizontalAlign.Start)
+          // 垂直两端对齐 -- 主轴
+          .justifyContent(FlexAlign.SpaceBetween)
+
+          // 右侧
+          Image($r('app.media.math'))
+            .width(100)
+        }
+        .width('100%')
+        .height(100)
+        .padding(10)
+
+        this.dividerLine()
+
+        //弹性布局（Flex）   todo 2025年1月7日17:51:19
 
 
+
+        this.dividerLine()
+        this.dividerLine()
 
       }
     }
@@ -919,7 +1220,7 @@ struct TestPage {
 
   @Builder
   dividerLine() {
-    Line().width('100%').backgroundColor(Color.Red).margin(10)
+    Line().width('100%').height(1).backgroundColor(Color.Red).margin(10)
   }
 
   @Builder

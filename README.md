@@ -19,6 +19,7 @@
 
 ### 课程资料
 - 视频》课程地址： `https://www.bilibili.com/video/BV1EJpLeRE3L/`
+- 视频2》课程地址： `https://www.bilibili.com/video/BV1BdaUerEJD/`
 - 文档》鸿蒙基础_V1.1： `https://www.yuque.com/megasu/hm_base_v1.1`
 - 文档》鸿蒙守护助手-黑马程序员_v1.0： `https://www.yuque.com/megasu/guardian_v1.0`
 - 源码》鸿蒙守护助手（Gitee）：`https://gitee.com/Megasu/hm_guardian`
