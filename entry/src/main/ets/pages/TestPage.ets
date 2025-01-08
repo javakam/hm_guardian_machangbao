@@ -54,7 +54,7 @@ struct TestPage {
           //比较
           let safeMaxInt: number = Number.MAX_SAFE_INTEGER; // 最大安全整数 9007199254740991 + 1
           console.log(`最大安全整数: ${safeMaxInt}`); // The value of Number.MAX_SAFE_INTEGER is 9007199254740991 2^53 − 1.
-          let unsafeInt = 9007199254740992n + 1n; // 超过最大安全整数
+          let unsafeInt: bigint = 9007199254740992n + 1n; // 超过最大安全整数
           console.log(`使用 BigInt 的不安全整数: ${unsafeInt}`);
           let bigNumber1: number = 9007199254740991
           let bigNumber2: number = 9007199254740992
@@ -397,16 +397,16 @@ struct TestPage {
         // 水平对齐 TextAlign（Start Center End）：.textAlign(TextAlign.Center)
         // 垂直对齐 Alignment（Top Center Bottom）：.align(Alignment.Top)
         Text('右上角')
-          .width(200)
-          .height(100)
+          .width(150)
+          .height(80)
           .backgroundColor('#d3f2e3')
           .textAlign(TextAlign.End)
           .align(Alignment.Top)
 
         //也可以只用 align()
         Text('左下角')
-          .width(200)
-          .height(100)
+          .width(150)
+          .height(80)
           .backgroundColor('#d3f2e3')
           .margin(10)
           .align(Alignment.BottomStart)
@@ -833,7 +833,7 @@ struct TestPage {
          */
         Row() {
         }
-        .width('90%').height(160).backgroundColor('#ff0')
+        .width('80%').height(100).backgroundColor('#ff0')
         .shadow({
           // 模糊半径
           radius: 20,
@@ -1031,7 +1031,7 @@ struct TestPage {
             .backgroundColor(Color.Brown)
         }
         .width('100%')
-        .height(150)
+        .height(120)
         .backgroundColor('#ccc')
         // 顶部对齐
         //.alignItems(VerticalAlign.Top)
@@ -1054,7 +1054,7 @@ struct TestPage {
             .backgroundColor(Color.Brown)
         }
         .width('100%')
-        .height(150)
+        .height(120)
         .backgroundColor('#ccc')
         //报错： Argument of type 'VerticalAlign' is not assignable to parameter of type 'HorizontalAlign'. <ArkTSCheck>
         //报错： “VerticalAlign”类型的参数不能分配给“HorizontalAlign”类型的参数。<ArkTSCheck>
@@ -1077,7 +1077,7 @@ struct TestPage {
             .backgroundColor(Color.Orange)
         }
         .width('100%')
-        .height(150)
+        .height(100)
         .backgroundColor("#d3f2e3")
 
         this.spaceLine()
@@ -1089,26 +1089,30 @@ struct TestPage {
             .backgroundColor(Color.Brown)
         }
         .width('100%')
-        .height(150)
+        .height(100)
         .backgroundColor(Color.Blue)
 
         this.dividerLine()
 
         //单个子元素交叉轴对齐方式 alignSelf()
-        //枚举ItemAlign(Stretch拉伸，交叉轴拉伸效果)
+        //枚举 ItemAlign(Stretch拉伸，交叉轴拉伸效果)
+        /*
+        理解: alignItems 用于Group组件统一管理内部View的交叉轴方向；
+        而 alignSelf 用于Group中某个子View单独控制自己的交叉轴方向，拓展性更高。
+         */
         Row() {
           Text('子元素1')
-            .width(80)
+            .width(90)
             .height(40)
             .backgroundColor(Color.Pink)
           Text('alignSelf(ItemAlign.Stretch)')
-            .width(80)
+            .width(90)
             .height(40)
             .backgroundColor(Color.Orange)// 交叉轴方向尺寸拉伸
             .fontSize(14)
             .alignSelf(ItemAlign.Stretch)
           Text('子元素3')
-            .width(80)
+            .width(90)
             .height(40)
             .backgroundColor(Color.Brown)
         }
@@ -1135,7 +1139,7 @@ struct TestPage {
             .backgroundColor(Color.Pink)
         }
         .width('100%')
-        .height(300)
+        .height(150)
         .backgroundColor('#ccc')
         // 主轴对齐方式 -- 与Row写法一致
         .justifyContent(FlexAlign.SpaceBetween)
@@ -1165,6 +1169,27 @@ struct TestPage {
           }
         }
 
+        this.spaceLine()
+
+        Column() {
+          Row() {
+            Text('Bluetooth').fontSize(18)
+
+            //Blank()
+            //设置最小宽度为160
+            Blank('160').color(Color.Yellow)
+
+            Toggle({ type: ToggleType.Switch })
+              .width('13%')
+              .margin({
+                top: 14,
+                bottom: 14,
+                left: 10,
+                right: 10
+              })
+          }.width('100%').backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 15 })
+        }.backgroundColor(0xEFEFEF).padding(20)
+
         this.dividerLine()
 
         //案例-头条新闻
@@ -1184,6 +1209,7 @@ struct TestPage {
                 .width(14)
                 .fillColor('#999')
             }
+
             // .width('100%')
             // .justifyContent(FlexAlign.SpaceBetween)
           }
@@ -1204,18 +1230,699 @@ struct TestPage {
 
         this.dividerLine()
 
-        //弹性布局（Flex）   todo 2025年1月7日17:51:19
-
-
+        //弹性布局（Flex）
+        //案例-阶段菜单
+        Column() {
+          Text('阶段选择')
+            .fontWeight(600)
+            .fontSize(24)
+            .width('100%')
+            .padding(15)
+          Flex({ wrap: FlexWrap.Wrap }) {
+            Text('ArkUI')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+            Text('ArkTS')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+            Text('界面开发')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+            Text('系统能力')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+            Text('权限控制')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+            Text('元服务')
+              .padding(10)
+              .margin(5)
+              .backgroundColor('#f6f7f9')
+          }
+        }
+        .width('100%')
+        .height(180)
+        .padding(10)
 
         this.dividerLine()
+
+        //案例-微店商品
+        Column() {
+          Flex({ wrap: FlexWrap.Wrap }) {
+            Column({ space: 8 }) {
+              Image($r('app.media.top1'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥666 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量666')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+
+            Column({ space: 8 }) {
+              Image($r('app.media.top2'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥888 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量888')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+
+            Column({ space: 8 }) {
+              Image($r('app.media.top3'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥333 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量666')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+
+            Column({ space: 8 }) {
+              Image($r('app.media.top4'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥444 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量666')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+
+            Column({ space: 8 }) {
+              Image($r('app.media.top2'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥555 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量666')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+
+            Column({ space: 8 }) {
+              Image($r('app.media.top5'))
+                .width('100%')
+                .borderRadius({ topLeft: 5, topRight: 5 })
+              Text('[ 程序员必备 ] 最高版本-格子衫')
+                .fontSize(12)
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .padding({ left: 10, right: 10 })
+              Row() {
+                Text('￥444 ')
+                  .fontSize(12)
+                  .fontColor('#f52555')
+                Text('销量444')
+                  .fontSize(8)
+                  .fontColor('#999')
+              }
+              .padding({ left: 10, right: 10 })
+            }
+            .width('47%')
+            .backgroundColor('#fff')
+            .margin({ right: 10, bottom: 10 })
+            .borderRadius(5)
+            .alignItems(HorizontalAlign.Start)
+            .padding({ bottom: 10 })
+          }
+        }
+        .width('100%')
+        //.height(200)
+        .backgroundColor('#f5f6f7')
+        .padding(10)
+
         this.dividerLine()
+
+        //定位
+        //● 绝对定位：position，相对父组件左上角进行偏移
+        //● 相对定位：offset，相对自身左上角进行偏移
+
+        //绝对定位：position()
+        /*
+        {x: 水平偏移量, y: 垂直偏移量} -> x轴向右为正向，y轴向下为正向
+        绝对定位特点：
+        1. 参照父组件左上角进行偏移
+        2. 绝对定位后的组件不再占用自身原有位置
+         */
+        Column() {
+          Text('position')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+            .position({
+              x: 30,
+              y: 10
+            })
+          // .onClick(() => {
+          //   this.getUIContext().showAlertDialog({
+          //     title: '测试',
+          //     message: '绝对定位，初始位置不保留',
+          //     autoCancel: true,
+          //     alignment: DialogAlignment.Center,
+          //   })
+          // })
+        }
+        .width('100%')
+        .height(100)
+        .backgroundColor('#ccc')
+
+        this.spaceLine()
+
+        //相对定位：offset()
+        /*
+        相对定位特点：
+        1. 相对自身左上角进行偏移
+        2. 相对定位后的组件仍然占用自身原有位置
+         */
+        Column() {
+          Text('内容1')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Pink)
+          Text('offset')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Orange)// 占位
+            .offset({
+              x: 100,
+              y: -30
+            })
+          // .onClick(() => {
+          //   this.getUIContext().showAlertDialog({
+          //     title: '测试',
+          //     message: '相对定位，初始位置依然保留',
+          //     autoCancel: true,
+          //     alignment: DialogAlignment.Center,
+          //   })
+          // })
+          Text('内容3')
+            .width(80)
+            .height(40)
+            .backgroundColor(Color.Brown)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor('#ccc')
+
+        this.dividerLine()
+
+        //案例-人气热播故事 position
+        Column() {
+          // 图片
+          Image($r('app.media.moco'))
+            .width('100%')
+            .aspectRatio(0.8)
+            .borderRadius(8)
+          // 文字
+          Row({ space: 10 }) {
+            Image($r('app.media.ic_device_earphone_roc_filled'))
+              .width(20)
+              .padding(3)
+              .borderRadius(10)//控制 SVG 颜色
+              .backgroundColor('#0cbff9')
+              .fillColor('#fff')
+            Text('飞狗MOCO')
+              .fontSize(16)
+              .fontColor('#4b3635')
+              .fontWeight(600)
+          }
+          .width('100%')
+          .padding(5)
+          .alignItems(VerticalAlign.Top)
+
+          // VIP
+          Text('VIP')
+            .width(34)
+            .height(18)
+            .backgroundColor('#f3912e')
+            .border({
+              width: 2,
+              color: '#ffe7a0'
+            })
+            .borderRadius({
+              topLeft: 8,
+              bottomRight: 8
+            })
+            .position({ x: 0, y: 0 })
+            .fontSize(12)
+            .fontColor('#ffe788')
+            .textAlign(TextAlign.Center)
+            .fontWeight(700)
+            .fontStyle(FontStyle.Italic)
+        }
+        .width('45%')
+
+        this.dividerLine()
+
+        //上面的例子是通过 Column+position 实现，也可以使用层叠布局。
+        /*
+        层叠布局（StackLayout）用于在屏幕上预留一块区域来显示组件中的元素，提供元素可以重叠的布局。
+        层叠布局通过 Stack 容器组件实现位置的固定定位与层叠，容器中的子元素依次入栈，后一个子元素覆盖前一个子元素，子元素可以叠加，也可以设置位置。
+        层叠布局具有较强的页面层叠、位置定位能力，其使用场景有广告、卡片层叠效果等。
+
+        原理同 Android FrameLayout。
+         */
+        //
+        //默认居中
+        Stack() {
+          Column() {
+          }
+          .width('90%')
+          .height(130)
+          .backgroundColor(Color.Gray)
+
+          Text('text')
+            .width('60%')
+            .height('60%')
+            .backgroundColor(Color.Orange)
+          Button('button')
+            .width('30%')
+            .height('30%')
+            .backgroundColor('#ff8ff3eb')
+            .fontColor('#000')
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor(Color.Pink)
+
+        this.dividerLine()
+
+        //Stack 对齐方式
+        //alignContent: Alignment.BottomEnd
+        Column() {
+          Stack({ alignContent: Alignment.BottomEnd }) {
+            Column() {
+            }
+            .width('90%')
+            .height(130)
+            .backgroundColor(Color.Gray)
+
+            Text('text')
+              .width('60%')
+              .height('60%')
+              .backgroundColor(Color.Orange)
+            Button('button')
+              .width('30%')
+              .height('30%')
+              .backgroundColor('#ff8ff3eb')
+              .fontColor('#000')
+          }
+          .width('100%')
+          .height(150)
+          .backgroundColor(Color.Pink)
+        }
+        .margin(10)
+
+        //Stack Z序控制
+        //zIndex(整数数字)属性调整显示层级 -> 整数数字值越大，显示层级越高
+        Stack({ alignContent: Alignment.BottomEnd }) {
+          Column() {
+          }
+          .width('90%')
+          .height(130)
+          .backgroundColor(Color.Gray)
+
+          Text('text')
+            .width('60%')
+            .height('60%')
+            .backgroundColor('rgba(255,165,0,0.5)')// Z 序：显示在按钮上一层
+            .zIndex(1)
+          Button('button')
+            .width('30%')
+            .height('30%')
+            .backgroundColor('#ff8ff3eb')
+            .fontColor('#000')
+          //.zIndex(2)
+        }
+        .width('100%')
+        .height(150)
+        .backgroundColor(Color.Pink)
+
+        this.dividerLine()
+
+        //综合案例-B站-视频卡片(凤凰传奇 铁衣)
+        //https://www.yuque.com/megasu/hm_base_v1.1/evi4167sdd4o4769#YsF79
+        /*
+        区域划分：
+        ●图片区域（层叠布局）
+            ○图片组件
+            ○文字内容：播放 + 评论 + 时长（Row 线性布局）
+        ●文字区域（Column 线性布局）
+            ○标题文字
+            ○点赞量 + 更多 (Row 线性布局)
+         */
+        Column() {
+          Column() {
+            // 图片区域 -- 层叠布局
+            Stack({ alignContent: Alignment.BottomStart }) {
+              // 图片组件
+              Image($r('app.media.tieyi'))
+                .width(200)
+                .height(125)
+                .objectFit(ImageFit.Cover)
+                .borderRadius({
+                  topLeft: 10,
+                  topRight: 10
+                })
+              // 文字内容
+              Row() {
+                // 播放量
+                /*
+                此处也可以用 Text+ImageSpan 实现
+                Text() {
+                  ImageSpan($r('app.media.ic_bofangshu')).width(16)  //ImageSpan 不支持 fillColor('#fff')
+                  Span('282万').fontColor('#fff').fontSize(12)
+                }
+                 */
+
+                Row({ space: 5 }) {
+                  Image($r('app.media.ic_bofangshu')).width(16).fillColor('#fff')
+                  Text('282万').fontColor('#fff').fontSize(12)
+                }
+                .margin({ right: 5 })
+
+                // 评论数
+                Row({ space: 5 }) {
+                  Image($r('app.media.ic_ziyuan')).fillColor('#fff').width(14)
+                  Text('8655').fontColor('#fff').fontSize(12)
+                }
+
+                // 空白填充组件
+                Blank()
+                // 右侧时长
+                Text('4:33').fontColor('#fff').fontSize(12)
+              }
+              .width('100%')
+              .height(24)
+              .padding({ left: 5, right: 5 })
+            }
+
+            //.backgroundColor(Color.Blue)
+
+            // 文字区域
+            Column() {
+              // 标题文字
+              Text('【凤凰传奇新歌】欢迎来到国风统治区：唢呐一响神曲《铁衣流派推广曲》')
+                .fontSize(13)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .maxLines(2)
+                .lineHeight(16)
+              // 点赞更多
+              Row() {
+                Text('19万点赞')
+                  .padding(3)
+                  .backgroundColor('#fef0ef')
+                  .fontSize(10)
+                  .fontColor('#e66c43')
+                Image($r('app.media.ic_gengduo')).width(14).fillColor('#bfbfbf')
+              }
+              .width('100%')
+              .margin({ top: 10 })
+              .justifyContent(FlexAlign.SpaceBetween)
+            }
+            .padding(5)
+          }
+          .width(200)
+          .height(200)
+          .backgroundColor('#fff')
+          .borderRadius(10)
+        }
+        .width('100%')
+        //.height('100%')
+        .backgroundColor('#ccc')
+        .padding(10)
+
+        this.dividerLine()
+
+        //@State装饰器：组件内状态
+        /*
+        @State 装饰的变量，或称为状态变量，一旦变量拥有了状态属性，就可以触发其直接绑定UI组件的刷新。当状态改变时，UI会发生对应的渲染改变。
+        在状态变量相关装饰器中，@State是最基础的，使变量拥有状态属性的装饰器，它也是大部分状态变量的数据源。
+
+        @State装饰的变量，与声明式范式中的其他被装饰变量一样，是私有的，只能从组件内部访问，在声明时必须指定其类型和本地初始化。
+         */
+
+        //红包 @State ， position
+        // Button('显示右侧边栏红包').onClick(() => {
+        //   this.opacityNum = 1
+        // })
+
+        Button(`${this.followFlag ? '已关注' : '+ 关注'}`)
+          .backgroundColor(`${this.followFlag ? '#f60' : '#00f'}`)
+          .onClick(() => {
+            this.followFlag = !this.followFlag
+          })
+
+        this.spaceLine()
+
+        Column() {
+          Image($r('app.media.coupon_float_left'))
+          Image($r('app.media.ic_close'))
+            .width(18)
+            .height(18)
+            .backgroundColor('rgba(0,0,0,0.1)')
+            .padding(2)
+            .borderRadius(8)
+            .position({ x: 0, y: 0 })// 单击，修改opacityNum状态值为0，即透明度值变为0，红包区域隐藏
+            .onClick(() => {
+              this.opacityNum = 0
+            })
+        }
+        .width(80)
+        .height(80)
+        .position({ x: '85%', y: '80%' })
+        .opacity(this.opacityNum)
+
+        //通用属性
+        /*
+        多态样式
+        作用：设置组件不同状态的样式  ;  属性：stateStyles()
+        normal    正常态（默认态）
+        pressed   按压态（点击态）
+        disabled  不可用态（禁用态）
+        focused   获焦态（Tab 键换焦）
+        selected  选中态
+         */
+        //看这个 https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/quick-start/arkts-statestyles.md
+        Text('Text1')
+          .width(80)
+          .height(50)
+          .backgroundColor(Color.Pink)
+          .stateStyles({
+            pressed: {
+              .backgroundColor(Color.Red)
+              .width(200)
+            }
+          })
+
+        this.spaceLine()
+
+        /*
+        @Styles 和 stateStyles 联合使用
+        以下示例通过 @Styles 指定 stateStyles 的不同状态。
+         */
+        Text('Text2')
+          .width(100)
+          .height(50)
+          .fontSize(20)
+          .fontColor(Color.White)
+          .stateStyles({
+            normal: this.normalStyle,
+            pressed: this.pressedStyle,
+          })
+
+        this.spaceLine()
+
+        /*
+        在 stateStyles 里使用常规变量和状态变量
+        stateStyles 可以通过 this 绑定组件内的常规变量和状态变量。
+
+        @State  类似于 LiveData ； IOS 自带该属性
+        https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/quick-start/arkts-state.md
+         */
+        Button('clickMe')
+          .height(100)
+          .width(100)
+          .stateStyles({
+            normal: {
+              .backgroundColor(this.normalColor)
+            },
+            pressed: {
+              .backgroundColor(this.pressedColor)
+            }
+          })
+          .onClick(() => {
+            this.pressedColor = Color.Pink
+          })
+          .margin('5%')
+
+        this.dividerLine()
+
+        /*
+        动画 animation
+        组件的某些通用属性变化时，可以通过属性动画实现渐变过渡效果，提升用户体验。
+        支持的属性包括width、height、backgroundColor、opacity、scale、rotate、translate等。
+
+        https://www.yuque.com/megasu/hm_base_v1.1/evi4167sdd4o4769#xn98o
+         */
+
+        //动画-平移 translate(x,y,z) 注意xyz轴的方向。
+        Image($r('app.media.ic_my_avatar'))
+          .width(100)
+          .aspectRatio(1)
+          .stateStyles({
+            normal: {
+              .translate({ x: 0 })
+            },
+            pressed: {
+              .translate({ x: 150 })
+            }
+          })
+          .animation({
+            duration: 500,
+          })
+
+        //动画-缩放 scale(x,y,z) 默认值为1
+        Image($r('app.media.app_icon'))
+          .width(100)
+          .aspectRatio(1)
+          .stateStyles({
+            normal: {
+              .scale({ x: 1, y: 1 })
+            },
+            pressed: {
+              .scale({ x: 0.5, y: 0.5 })
+            }
+          })
+          .animation({
+            duration: 500,
+          })
+
+        //动画-旋转 rotate()(x,y,z)
+        Image($r('app.media.ic_my_avatar'))
+          .width(100)
+          .aspectRatio(1)
+          .stateStyles({
+            normal: {
+              .rotate({ angle: 0 })
+            },
+            pressed: {
+              .rotate({ angle: 200 })
+            }
+          })
+          .animation({
+            duration: 500,
+          })
+
+        this.dividerLine()
+
 
       }
     }
     .height('100%')
     .width('100%')
+  }
 
+  @State followFlag: boolean = false
+  @State opacityNum: number = 1
+  @State normalColor: Color = Color.Green
+  pressedColor: Color = Color.Blue
+
+  @Styles
+  normalStyle() {
+    .backgroundColor(Color.Blue)
+    .width(100)
+  }
+
+  @Styles
+  pressedStyle() {
+    .backgroundColor(Color.Red)
+    .width("180vp")
   }
 
   @Builder
