@@ -1,4 +1,3 @@
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 /**
  * @author machangbao
@@ -1901,6 +1900,14 @@ struct TestPage {
 
         this.dividerLine()
 
+        //综合案例-美团购物车 - 运算符
+        //TestPageMeituanShopCart.ets
+
+        /*
+        总结：@See README.md
+         */
+
+        //todo 2025年1月9日11:02:48 类型进阶与渲染控制
 
       }
     }

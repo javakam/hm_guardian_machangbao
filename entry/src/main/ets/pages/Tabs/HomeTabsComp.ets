@@ -1,8 +1,7 @@
-
-
 @Component
 export struct HomeTabsComp {
   @State message: string = '首页';
+
   build() {
     RelativeContainer() {
       Text(this.message)

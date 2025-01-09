@@ -1,6 +1,6 @@
-import { deviceInfo } from "@kit.BasicServicesKit"
-import { hidebug } from "@kit.PerformanceAnalysisKit"
-import { statfs } from "@kit.CoreFileKit"
+import { deviceInfo } from '@kit.BasicServicesKit'
+import { hidebug } from '@kit.PerformanceAnalysisKit'
+import { statfs } from '@kit.CoreFileKit'
 
 @Component
 export struct MyTabsComp {
