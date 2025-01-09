@@ -10,11 +10,27 @@ HarmonyOS Next 脱胎于 Openharmony，又有自己的一些东西。HarmonyOS N
 架构上，参照官方案例 10_TextToSpeech->10_Complete 中的代码可以看出，整体项目不仅架构上和Android非常相似，
 组件化上也与Android开发一致。代码按类型归类分包，便于阅读、协同开发和后期维护。文档更新的及其及时和频繁，华为对该系统的重视程度可见一斑。
 
+10_TextToSpeech->10_Complete
+第十节课：https://developer.huawei.com/consumer/cn/codelabsPortal/carddetails/tutorials_Next-TTS
+第一节课：https://developer.huawei.com/consumer/cn/codelabsPortal/carddetails/tutorials_Next-HelloWorld
+
 不足之处，目前代码可读性不高，项目里无法直接看到具体实现方式(2025年1月)。
 目前使用起来感觉有点乱，比如 External Libraries 中有hms和openharmony两个同名的"ArkTS-HarmonyOS-5.0.1"。
 
 从API Version 8开始，不再提供Java语言SDK包。
 ```
+
+### 上手
+- HarmonyOS Next 知识地图
+https://developer.huawei.com/consumer/cn/app/knowledge-map/
+  - ① 了解HarmonyOS     ->   鸿蒙开发快速入门
+  - ② 一次开发，多端部署  ->  "一多垂域案例"
+  - ③ 业务场景与解决方案  ->  新闻阅读类 , 项目代码 FluentNewsHomepage :
+- 最后过一遍该项目
+https://gitee.com/harmonyos_samples/fluent-news-homepage
+
+- HarmonyOS Next 应用开发导读 -> HarmonyOS | 5.0.0(13)
+https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/application-dev-guide-V13?catalogVersion=V13
 
 ### 重点内容
 

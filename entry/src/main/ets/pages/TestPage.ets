@@ -248,7 +248,6 @@ struct TestPage {
            最后过一遍该项目
 
         HarmonyOS Next 应用开发导读 -> HarmonyOS | 5.0.0(13)
-        https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/application-dev-guide-V5
         https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/application-dev-guide-V13?catalogVersion=V13
          */
 
