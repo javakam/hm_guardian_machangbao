@@ -21,16 +21,18 @@ HarmonyOS Next 脱胎于 Openharmony，又有自己的一些东西。HarmonyOS N
 ```
 
 ### 上手
+- OpenHarmony 和 HarmonyOS Next 的区别
+- HarmonyOS Next 应用开发导读 -> HarmonyOS | 5.0.0(13)
+  https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/application-dev-guide-V13?catalogVersion=V13
+
 - HarmonyOS Next 知识地图
 https://developer.huawei.com/consumer/cn/app/knowledge-map/
   - ① 了解HarmonyOS     ->   鸿蒙开发快速入门
   - ② 一次开发，多端部署  ->  "一多垂域案例"
   - ③ 业务场景与解决方案  ->  新闻阅读类 , 项目代码 FluentNewsHomepage :
+- TestPage 内容
 - 最后过一遍该项目
 https://gitee.com/harmonyos_samples/fluent-news-homepage
-
-- HarmonyOS Next 应用开发导读 -> HarmonyOS | 5.0.0(13)
-https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/application-dev-guide-V13?catalogVersion=V13
 
 ### 重点内容
 

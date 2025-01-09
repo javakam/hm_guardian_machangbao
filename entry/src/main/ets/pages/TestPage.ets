@@ -300,7 +300,7 @@ struct TestPage {
             .fontStyle(FontStyle.Italic)
             .decoration({ type: TextDecorationType.Underline, color: Color.Black })
           Span('，我是Span3').fontSize(16).fontColor(Color.Grey)
-            .decoration({ type: TextDecorationType.Overline, color: Color.Green })
+            .decoration({ type: TextDecorationType.Overline, color: Color.Green, })
         }
         .borderWidth(1)
         .padding(10)
@@ -1456,14 +1456,14 @@ struct TestPage {
               x: 30,
               y: 10
             })
-          // .onClick(() => {
-          //   this.getUIContext().showAlertDialog({
-          //     title: '测试',
-          //     message: '绝对定位，初始位置不保留',
-          //     autoCancel: true,
-          //     alignment: DialogAlignment.Center,
-          //   })
-          // })
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: '测试',
+              message: '绝对定位，初始位置不保留',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+            })
+          })
         }
         .width('100%')
         .height(100)
@@ -1490,14 +1490,14 @@ struct TestPage {
               x: 100,
               y: -30
             })
-          // .onClick(() => {
-          //   this.getUIContext().showAlertDialog({
-          //     title: '测试',
-          //     message: '相对定位，初始位置依然保留',
-          //     autoCancel: true,
-          //     alignment: DialogAlignment.Center,
-          //   })
-          // })
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: '测试',
+              message: '相对定位，初始位置依然保留',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+            })
+          })
           Text('内容3')
             .width(80)
             .height(40)
@@ -1691,9 +1691,10 @@ struct TestPage {
                 }
 
                 // 空白填充组件
-                Blank()
+                // Blank()
                 // 右侧时长
-                Text('4:33').fontColor('#fff').fontSize(12)
+                // Text('4:33').layoutWeight(1).align(Alignment.End).fontColor('#fff').fontSize(12)
+                Text('4:33').layoutWeight(1).textAlign(TextAlign.End).fontColor('#fff').fontSize(12)
               }
               .width('100%')
               .height(24)
@@ -1737,7 +1738,7 @@ struct TestPage {
 
         this.dividerLine()
 
-        //@State装饰器：组件内状态
+        //@State 装饰器：组件内状态
         /*
         @State 装饰的变量，或称为状态变量，一旦变量拥有了状态属性，就可以触发其直接绑定UI组件的刷新。当状态改变时，UI会发生对应的渲染改变。
         在状态变量相关装饰器中，@State是最基础的，使变量拥有状态属性的装饰器，它也是大部分状态变量的数据源。
