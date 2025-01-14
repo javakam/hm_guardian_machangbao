@@ -1122,7 +1122,7 @@ struct TestPage {
 
         //同时设置 alignSelf 和 alignItems，alignSelf 生效，alignItems失效。
         Column() {
-          Text('1')
+          Text('alignSelf(ItemAlign.End)')
             .width(100)
             .height(40)
             .backgroundColor(Color.Pink)

@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/TestPage",
     "pages/TestPageImage",
-    "pages/TestPageMeituanShopCart"
+    "pages/TestPageMeituanShopCart",
+    "pages/FlexExample"
   ]
 }
