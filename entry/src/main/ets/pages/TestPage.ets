@@ -1,4 +1,3 @@
-
 /**
  * @author machangbao
  * @description ArkTs语言介绍
@@ -1122,11 +1121,11 @@ struct TestPage {
 
         //同时设置 alignSelf 和 alignItems，alignSelf 生效，alignItems失效。
         Column() {
-          Text('alignSelf(ItemAlign.End)')
+          Text('1')
             .width(100)
             .height(40)
             .backgroundColor(Color.Pink)
-          Text('2')
+          Text('alignSelf(ItemAlign.End)')
             .width(100)
             .height(40)
             .backgroundColor(Color.Orange)// 单个元素-交叉轴对齐方式
@@ -1456,14 +1455,14 @@ struct TestPage {
               x: 30,
               y: 10
             })
-          .onClick(() => {
-            this.getUIContext().showAlertDialog({
-              title: '测试',
-              message: '绝对定位，初始位置不保留',
-              autoCancel: true,
-              alignment: DialogAlignment.Center,
+            .onClick(() => {
+              this.getUIContext().showAlertDialog({
+                title: '测试',
+                message: '绝对定位，初始位置不保留',
+                autoCancel: true,
+                alignment: DialogAlignment.Center,
+              })
             })
-          })
         }
         .width('100%')
         .height(100)
@@ -1490,14 +1489,14 @@ struct TestPage {
               x: 100,
               y: -30
             })
-          .onClick(() => {
-            this.getUIContext().showAlertDialog({
-              title: '测试',
-              message: '相对定位，初始位置依然保留',
-              autoCancel: true,
-              alignment: DialogAlignment.Center,
+            .onClick(() => {
+              this.getUIContext().showAlertDialog({
+                title: '测试',
+                message: '相对定位，初始位置依然保留',
+                autoCancel: true,
+                alignment: DialogAlignment.Center,
+              })
             })
-          })
           Text('内容3')
             .width(80)
             .height(40)

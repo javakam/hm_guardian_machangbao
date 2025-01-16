@@ -1,3 +1,7 @@
+/*
+美团购物车(七. ArkTS-核心-基础   拉到底)
+https://www.yuque.com/megasu/hm_base_v1.1/td91d1sawk1ti96g#uYTWS
+ */
 @Entry
 @Component
 struct TestPageMeituanShopCart {
